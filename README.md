@@ -7,7 +7,7 @@ Our final project is going to be a break-out style game. The player will control
 Controlled by the player. Ball bounces off this<br>
 
 **Ball:**<br>
-Moves at continous speed. Bounces off of the paddle, the walls, and the obstacles. If it falls off the bottom dereases lives by 1.<br>
+Moves at continous speed with a trail following it. Bounces off of the paddle, the walls, and the obstacles. If it falls off the bottom dereases lives by 1.<br>
 Note:If extra balls are spawned need to make sure it is the last ball to fall off before it decreases lives.<br>
 <br>
 **Blocks:**<br>
@@ -22,3 +22,5 @@ Larger Paddle: Increases size of paddle for an amount of time.<br>
 Piercing Shot: Stops bouncing off of bricks. Just goes through them breaking them. Ends after certain time.<br>
 Larger Ball: Increases size of ball for an amount of time.<br>
 Safety Net: Creates a floor that prevents you from losing any lives for a short amount of time.<br>
+Shadow Ball: Creates 5-20 fake balls that look the same as the actual balls. The fake balls on't bounce off of the paddle, only the sides of the screen. Last for a limited amount of time.
+Strobe Ball: Turns the ball the same color as the background so it is invisible, then back to how it was, then the same color as the background, then back and so on. Have to keep track of the trajectory of the ball while invisible -> adds skill.
