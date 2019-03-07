@@ -12,4 +12,6 @@ public class Room {
 	public static final int START_DELAY = 1000;
 	public static final int STEP_TIME = 10;
  
+	
+	
 }
