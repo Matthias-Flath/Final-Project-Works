@@ -4,7 +4,7 @@ public class Paddle {
 	
 /*	private xPosition
 *	private yPosition
-*	
+*	private image
 *
 *	public void move(){
 *

@@ -4,22 +4,22 @@ import java.awt.*;
 
 public class Sprite {
 	
-	private int x, y, i_width, i_height;
+	private int xPosition, yPosition;
 	private Image image;
 	
 	
 	
 	public int getX() {
-		return x;
+		return xPosition;
 	}
-	public void setX(int x) {
-		this.x = x;
+	public void setX(int xPosition) {
+		this.xPosition = xPosition;
 	}
 	public int getY() {
-		return y;
+		return yPosition;
 	}
-	public void setY(int y) {
-		this.y = y;
+	public void setY(int yPosition) {
+		this.yPosition = yPosition;
 	}
 	public int getI_width() {
 		return i_width;
