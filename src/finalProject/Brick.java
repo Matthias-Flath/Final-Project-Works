@@ -1,8 +1,9 @@
 package finalProject;
 
 public class Brick {
+	
+	
 //		public static points = 0
-//		
 /*		private xPosition;
  * 		private yPosition;
  * 		private image
@@ -13,7 +14,7 @@ public class Brick {
 //
 //		public void collideWithBall() {
 //			destroy self
-//			points increase
+//			points += amount.
 //			random number chance (create item)
 //		}
 }
