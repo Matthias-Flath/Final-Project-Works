@@ -2,20 +2,31 @@ package finalProject;
 
 import java.awt.*;
 import javax.swing.*;
+/*
+ * this is our window we play our game inside.
+ * 
+ */
+public class Room extends Canvas {
 
-public class Room {
+	private static final long serialVersionUID = 8086635427339352854L;
 	
+	public Room(int width, int height, String title, Launcher launcher) {
+			JFrame window = new JFrame(title);//create a window
+			
+			//set the size and don't allow the size to change
+			window.setPreferredSize(new Dimension(width, height));
+			window.setMaximumSize(new Dimension(width, height));
+			window.setMinimumSize(new Dimension(width, height));
+			
+			window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//clicking red x stops program
+			window.setResizable(false);//cannot resize
+			window.setLocationRelativeTo(null);//spawn in center of screen
+			window.add(launcher);//add our launcher to the window
+			window.setVisible(true);//window can be seen
+			launcher.start();//start the game
+	}
 	
-	
-//	public static final int WIDTH = 600;
-//	public static final int HEIGHT = 800;
-//	public static final int BOTTOM = 790;
-//	public static final int START_PADDLE_X = 300; 
-//	public static final int START_PADDLE_Y = 760;
-//	public static final int START_BALL_X = 300;
-//	public static final int START_BALL_Y = 400;
-//	public static final int START_DELAY = 1000;
-//	public static final int STEP_TIME = 10;
+//	
 // 
 	
 	

@@ -1,6 +1,6 @@
 package finalProject;
 
-public class Ball {
+public class Ball extends GameObject{
 
 	/*	public int xPosition;
 	 * 	public int yPosition;

@@ -1,6 +1,6 @@
 package finalProject;
 
-public class Item {
+public class Item extends GameObject{
 //
 //		public int type;.
 //		private image 
