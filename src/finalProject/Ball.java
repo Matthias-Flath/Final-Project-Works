@@ -1,6 +1,28 @@
 package finalProject;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 public class Ball extends GameObject{
+
+	public Ball(int xPosition, int yPosition, ID id) {
+		super(xPosition, yPosition, id);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void tick() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void render(Graphics g) {
+		g.setColor(Color.blue);
+		g.fillOval(xPosition, yPosition, 32, 32);
+		// TODO Auto-generated method stub
+		
+	}
 
 	/*	public int xPosition;
 	 * 	public int yPosition;

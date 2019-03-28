@@ -28,6 +28,8 @@ public class Launcher extends Canvas implements Runnable {
 		
 		//add paddle to handler
 		handler.addObject(new Paddle(WIDTH/2-32, HEIGHT - 100, ID.Paddle));
+		handler.addObject(new Ball(WIDTH/2-32, HEIGHT/2, ID.Ball));
+		
 		
 	}
 	
