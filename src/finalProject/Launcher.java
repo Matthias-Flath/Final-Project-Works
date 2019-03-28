@@ -108,6 +108,9 @@ public class Launcher extends Canvas implements Runnable {
 	public static void main(String[] args) {
 		new Launcher();//run the game 
 	}
+
+	
+	
 	
 	
 }

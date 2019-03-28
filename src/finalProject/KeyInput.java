@@ -26,10 +26,24 @@ public class KeyInput extends KeyAdapter {
 			if(tempObject.getId() == ID.Paddle) {
 				//if the object it is checking is a paddle
 				if(key == KeyEvent.VK_A) {//if A is pressed move paddle left
-					tempObject.setxPosition(tempObject.getxPosition()-5);
+					if(tempObject.getxPosition()-5 < Launcher.WIDTH)
+					{
+						//if location change would put past edge of screen do nothing
+					}
+					else//otherwise move it
+					{
+						tempObject.setxPosition(tempObject.getxPosition()-5);
+					}
 				}
 				if(key == KeyEvent.VK_D) {//if D is pressed move paddle right
-					tempObject.setxPosition(tempObject.getxPosition()+5);
+					if(tempObject.getxPosition() + 5 > Launcher.WIDTH)
+					{
+						//if it would move past screen don't
+					}
+					else //otherwise move
+					{
+						tempObject.setxPosition(tempObject.getxPosition()+5);
+					}
 				}
 				
 			}
