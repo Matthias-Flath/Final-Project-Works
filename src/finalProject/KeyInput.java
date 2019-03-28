@@ -26,7 +26,7 @@ public class KeyInput extends KeyAdapter {
 			if(tempObject.getId() == ID.Paddle) {
 				//if the object it is checking is a paddle
 				if(key == KeyEvent.VK_A) {//if A is pressed move paddle left
-					if(tempObject.getxPosition()-5 < Launcher.WIDTH)
+					if((tempObject.getxPosition()-5) < 0)
 					{
 						//if location change would put past edge of screen do nothing
 					}
@@ -36,7 +36,7 @@ public class KeyInput extends KeyAdapter {
 					}
 				}
 				if(key == KeyEvent.VK_D) {//if D is pressed move paddle right
-					if(tempObject.getxPosition() + 5 > Launcher.WIDTH)
+					if(tempObject.getxPosition() + 5 > Launcher.WIDTH-64)
 					{
 						//if it would move past screen don't
 					}
