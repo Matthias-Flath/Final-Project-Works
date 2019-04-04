@@ -18,8 +18,12 @@ public class Paddle extends GameObject {
 	}
 
 	public void tick() {//This is what is called each run loop it changes the speed of the paddle
-		xPosition += this.xSpeed;
-		yPosition +=this.ySpeed;
+		if(this.getxPosition()+this.getxSpeed()<0 || xPosition+this.getxSpeed()>Launcher.WIDTH-64) {
+			//don't move if you would go beyond screen
+		}
+		else {
+			xPosition += this.xSpeed;
+		}
 	}
 	
 	public void render(Graphics g) {
