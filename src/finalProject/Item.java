@@ -1,6 +1,13 @@
 package finalProject;
 
+import java.awt.Graphics;
+
 public class Item extends GameObject{
+
+	public Item(int xPosition, int yPosition, ID id) {
+		super(xPosition, yPosition, id);
+		// TODO Auto-generated constructor stub
+	}
 //
 //		public int type;.
 //		private image 
@@ -39,4 +46,16 @@ public class Item extends GameObject{
 //			fifth kind of powerup
 //		}
 //	}
+
+	@Override
+	public void tick() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void render(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
 }
