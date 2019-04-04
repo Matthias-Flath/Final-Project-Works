@@ -4,9 +4,9 @@ public class Brick extends GameObject {
 	
 	
 //		public static points = 0
-/*		private xPosition;
- * 		private yPosition;
- * 		private image
+/*	
+ * 		
+ * 		
  * 
  * 
  * 

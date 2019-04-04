@@ -18,7 +18,6 @@ public class Launcher extends Canvas implements Runnable {
 	public static final int WIDTH = 640, HEIGHT = (WIDTH/12*9);
 	private Thread thread;
 	private boolean running = false;
-	
 	private Handler handler;
 	
 	public Launcher() {
@@ -28,7 +27,7 @@ public class Launcher extends Canvas implements Runnable {
 		
 		//add paddle to handler
 		handler.addObject(new Paddle(WIDTH/2-32, HEIGHT - 100, ID.Paddle));
-		handler.addObject(new Ball(WIDTH/2-32, HEIGHT/2, ID.Ball));
+		//handler.addObject(new Ball(WIDTH/2-32, HEIGHT/2, ID.Ball));
 		
 		
 	}
