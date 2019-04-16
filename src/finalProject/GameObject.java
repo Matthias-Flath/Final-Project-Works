@@ -12,8 +12,8 @@ public abstract class GameObject {
 	protected int xPosition;
 	protected int yPosition;
 	protected ID id;
-	protected int xSpeed;
-	protected int ySpeed;
+	protected double xSpeed;
+	protected double ySpeed;
 	
 	public GameObject(int xPosition, int yPosition, ID id) {
 		//sets the starting position as well as identifys what kind of object it is.
@@ -49,19 +49,19 @@ public abstract class GameObject {
 		this.id = id;
 	}
 
-	public int getxSpeed() {
+	public double getxSpeed() {
 		return xSpeed;
 	}
 
-	public void setxSpeed(int xSpeed) {
-		this.xSpeed = xSpeed;
+	public void setxSpeed(double d) {
+		this.xSpeed = d;
 	}
 
-	public int getySpeed() {
+	public double getySpeed() {
 		return ySpeed;
 	}
 
-	public void setySpeed(int ySpeed) {
+	public void setySpeed(double ySpeed) {
 		this.ySpeed = ySpeed;
 	}
 	

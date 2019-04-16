@@ -32,8 +32,8 @@ public class KeyInput extends KeyAdapter {
 					}
 					else//otherwise move it
 					{
-						tempObject.setxPosition(tempObject.getxPosition()-5);
-						//tempObject.setxSpeed(-5); This is the proper movement but It isn't currently working
+						//tempObject.setxPosition(tempObject.getxPosition()-5);
+						tempObject.setxSpeed(-.05); 
 						
 						
 					}
@@ -45,8 +45,8 @@ public class KeyInput extends KeyAdapter {
 					}
 					else //otherwise move
 					{
-						tempObject.setxPosition(tempObject.getxPosition()+5);
-						//tempObject.setxSpeed(+5); This is the proper movement but It isn't currently working
+						//tempObject.setxPosition(tempObject.getxPosition()+5);
+						tempObject.setxSpeed(.05); 
 					}
 				}
 				
