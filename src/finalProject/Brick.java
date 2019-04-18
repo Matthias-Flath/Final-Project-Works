@@ -1,37 +1,34 @@
 package finalProject;
 
-public class Brick extends GameObject {
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+
+public class Brick extends GameObject{
+
 	
+	public Brick(int xPosition, int yPosition, ID id) {
+		super(xPosition, yPosition, id);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void tick() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void render(Graphics g) {
+		g.setColor(Color.green);
+		g.fillRect(xPosition, yPosition, width, height);
+		
+	}
+
+	@Override
+	public Rectangle getBounds() {
+		// TODO Auto-generated method stub
+		return new Rectangle(xPosition, yPosition, width, height);
+	}
 	
-//		public static points = 0
-/*	
- * 		
- * 		
- * 
- * 
- * 
- * 		public void tick() {
- * 		did the ball collide 
- * 			if so 
- * 			handler.removeObject(this.Brick);
- * 		what does the brick do
- * 		}
- * 
- * 		public void render(Graphics g) { 
- * 
- * 		g.setColor(Color green);
- * 		g.fillRect(xPosition, yPosition, 16, 16);
- * 	
- * 		}
- */
-//		public brick {
-//		
-//		}
-//
-	
-//		public void collideWithBall() {
-//			destroy self
-//			points += amount.
-//			random number chance (create item)
-//		}
 }

@@ -2,90 +2,72 @@ package finalProject;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.util.Random;
 
-public class Ball extends GameObject{
+public class Ball extends GameObject {
 
-	public Ball(int xPosition, int yPosition, ID id) {
+	private Random r = new Random();
+	Handler handler;
+	public Ball(int xPosition, int yPosition, ID id, Handler handler) {
 		super(xPosition, yPosition, id);
-		// TODO Auto-generated constructor stub
+		this.handler = handler;
+		xSpeed = r.nextInt((3 - -3) +1) -3;
+		ySpeed = -3;
+
 	}
+
 
 	@Override
 	public void tick() {
-		// TODO Auto-generated method stub
-		
+		xPosition += xSpeed;
+		yPosition += ySpeed;
+		if(xPosition < 0 || xPosition > 615) {
+			xSpeed *= -1;
+		}
+		if(yPosition < 0) {
+			ySpeed *= -1;
+		}
+		if(yPosition > Launcher.HEIGHT)
+		{
+			HUD.LIVES--;
+			xSpeed = r.nextInt((3 - -3) +1) -3;
+			ySpeed = r.nextInt((3 - -3) +1) -3;
+			if(xSpeed == 0) {
+				xSpeed = 1;
+			}
+			if(ySpeed == 0) {
+				ySpeed = 1;
+			}
+			xPosition = Launcher.WIDTH/2;
+			yPosition = Launcher.HEIGHT/2;
+		}
+		collision();
 	}
 
+	public void collision() {
+		for (int i = 0; i < handler.objects.size(); i++) {
+			GameObject tempObject = handler.objects.get(i);
+			if(tempObject.getId() == ID.Paddle) {
+				//paddle collision code
+				if(getBounds().intersects(tempObject.getBounds())) {
+					this.ySpeed*=-1;
+				}
+			}
+			if(tempObject.getId() == ID.Brick) {//brick collison
+			}
+		}
+		
+	}
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.blue);
-		g.fillOval(xPosition, yPosition, 32, 32);
-		// TODO Auto-generated method stub
-		
+		g.fillOval(xPosition, yPosition, 20, 20);
 	}
 
-	/*	public int xPosition;
-	 * 	public int yPosition;
-	 * 	public int xSpeed;
-	 * 	public int ySpeed;
-	 * 	public image;
-	 * 	public static int lives = 3;
-	 * 	public static int ballCount = 0;
-	 * 
-	 * 	
-	 *		public Ball{
-	 *			ballCount++;
-	 * 			xPostition =;	
-	 * 			yPosition =;
-	 * 			xSpeed =;
-	 * 			ySpeed;
-	 * 		}
-	 * 
-	 * 
-	 * 
-	 * 	public move(){
-	 * 		xPosition += xSpeed;
-	 * 		yPosition += ySpeed;
-	 * 
-	 * 		if(collision with paddle)
-	 * 		{
-	 * 			bounce()
-	 * 		}
-	 * 		
-	 * 		if(xPosition<0 || x > width)//left or right wall
-	 * 		{
-	 * 		bounce()
-	 * 		}
-	 * 
-	 * 		if (yPosition < 0)//top of screen
-	 * {
-	 * bounce()
-	 * }
-	 * 
-	 * if(collide with brick)
-	 * {
-	 * 
-	 * }
-	 * 			if(yPosition > bottom screen)//falls off bottom
-	 * 		{
-	 * 				ballCount -=1;
-	 * 				destroy self
-	 * 			if(ballCount < 1)
-	 * 				{
-	 * 					lives -= 1;
-	 * 				}
-	 * 		}
-	 * 
-	 * 	}
-	 * 	
-	 * 	
-	 * 	public void bounce(){
-	 * 			
-	 * 		
-	 * 		
-	 * 		}
-	 * 
-	 * 
-	 * 
-	 */
+	@Override
+	public Rectangle getBounds() {
+		return new Rectangle(xPosition,yPosition, 20, 20);
+	}
+
 }
