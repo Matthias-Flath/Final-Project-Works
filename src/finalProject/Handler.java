@@ -7,9 +7,10 @@ import java.util.LinkedList;
  * every object in the Handler.
  */
 public class Handler {
-	
+	//our list of objects
 	LinkedList<GameObject> objects = new LinkedList<GameObject>();
 	
+	//loops through every object running their respective tick() methods
 	public void tick() {
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject tempObject = objects.get(i);
@@ -19,7 +20,7 @@ public class Handler {
 			
 		}
 	}
-	
+	//loops through every object running their respective render() methods
 	public void render(Graphics g) {
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject tempObject = objects.get(i);
@@ -31,7 +32,7 @@ public class Handler {
 	}
 	
 	
-	
+	//the ability to add or remove objects from our list.
 	public void addObject(GameObject object) {
 		this.objects.add(object);
 	}

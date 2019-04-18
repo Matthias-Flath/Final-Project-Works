@@ -10,19 +10,23 @@ import java.awt.Rectangle;
  */
 public abstract class GameObject {
 	
-	protected int xPosition, yPosition, xSpeed, ySpeed;
-	protected ID id;
+	protected int xPosition, yPosition, xSpeed, ySpeed;//position on screen and speed
+	protected ID id;//identifies what the object is.
 	
+	//every object on creation has these
 	public GameObject(int xPosition, int yPosition, ID id) {
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 		this.id = id;
 	}
 	
-	public abstract void tick();
-	public abstract void render(Graphics g);
-	public abstract Rectangle getBounds();
+	//these abstract methods are necessary for every object on the screen
+	public abstract void tick();//what the object does
+	public abstract void render(Graphics g);//what the object looks like
+	public abstract Rectangle getBounds();//what is the objects collision box
+	
 
+	//getters and setters
 	public ID getId() {
 		return id;
 	}

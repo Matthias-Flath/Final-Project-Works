@@ -8,7 +8,9 @@ import java.awt.image.BufferStrategy;
 public class Launcher extends Canvas implements Runnable{
 
 	private static final long serialVersionUID = 3782368761176837393L;
-	
+	//some variables we need the width and height are public static finals so other 
+	//objects can use them to determine where they are if we want to change the size of the room
+	//without changing individual numbers.
 	public static final int WIDTH = 640, HEIGHT = 480;
 	private Thread thread;
 	private boolean running = false;
@@ -20,27 +22,27 @@ public class Launcher extends Canvas implements Runnable{
 	 * key listener. this is also where you actually add objects to the game.
 	 */
 	
-	public Launcher() {
+	public Launcher() {//use this to add objects to our handler then spawn a room
 		handler = new Handler();
-		this.addKeyListener(new KeyInput(handler));
+		this.addKeyListener(new KeyInput(handler));//need this to look for key presses
 		new Room(WIDTH, HEIGHT, "Breakout!", this);
 		
 		hud = new HUD();
 		
-		handler.addObject(new Paddle(270, HEIGHT-80, ID.Paddle ));
+		handler.addObject(new Paddle(270, HEIGHT-80, ID.Paddle ));//need to add these after the handler is made
 		handler.addObject(new Ball(WIDTH/2, HEIGHT/2, ID.Ball,handler));
 		
 	}
 	
 	
-	public synchronized void start() {
+	public synchronized void start() {//remember our room runs this. starts the thread
 		thread = new Thread(this);
 		thread.start();
 		running = true;
 	}
 	
 	
-	public synchronized void stop() {
+	public synchronized void stop() {//stops the thread
 		try {
 			thread.join();
 			running = false;
@@ -49,6 +51,8 @@ public class Launcher extends Canvas implements Runnable{
 		}
 	}
 	
+	//the actual Game loop is a standard game loop you can look up
+	//it uses your system time to loop through your code running the tick() and render() methods
 	@Override
 	public void run() {
 		long lastTime = System.nanoTime();
@@ -79,8 +83,8 @@ public class Launcher extends Canvas implements Runnable{
 	}
 	
 	
-	private void render() {
-		BufferStrategy bs = this.getBufferStrategy();
+	private void render() {//draws stuff
+		BufferStrategy bs = this.getBufferStrategy();//used to slow down the loop
 		if ( bs == null) {
 			this.createBufferStrategy(3);
 			return;
@@ -88,12 +92,12 @@ public class Launcher extends Canvas implements Runnable{
 		
 		Graphics g = bs.getDrawGraphics();
 		
-		g.setColor(Color.black);
+		g.setColor(Color.black);//fill the screen with black
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
 		
-		handler.render(g);
-		hud.render(g);
+		handler.render(g);//loop through all objects drawing them
+		hud.render(g);//draw the HUD
 		
 		g.dispose();
 		bs.show();
@@ -101,12 +105,12 @@ public class Launcher extends Canvas implements Runnable{
 
 
 	private void tick() {
-		handler.tick();
-		hud.tick();
+		handler.tick();//loops through all objects running their tick() methods
+		hud.tick();//tick()the HUD
 		
 	}
 
-	public static int clamp(int var, int min, int max) {
+	public static int clamp(int var, int min, int max) {//used to set bounds on objects movement sometimes
 		if(var >= max) {
 			return var = max;
 		}else if (var <= min){
@@ -114,9 +118,9 @@ public class Launcher extends Canvas implements Runnable{
 		}
 		return var;
 	}
-
+//our main method
 	public static void main(String[] args) {
-		new Launcher();
+		new Launcher();//just need a launcher which has a room which runs the start.
 	}
 
 	
