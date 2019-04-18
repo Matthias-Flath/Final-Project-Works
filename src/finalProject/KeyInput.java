@@ -2,7 +2,9 @@ package finalProject;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
+/*
+ * manages our key input 
+ */
 public class KeyInput extends KeyAdapter {
 
 	private Handler handler;

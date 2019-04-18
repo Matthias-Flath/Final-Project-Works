@@ -14,7 +14,11 @@ public class Launcher extends Canvas implements Runnable{
 	private boolean running = false;
 	private Handler handler;
 	private HUD hud;
-	
+	/*
+	 * This is the launcher. It contains both the main method that actually starts the game
+	 * as well as most of the back-ground programming including the game loop and 
+	 * key listener. this is also where you actually add objects to the game.
+	 */
 	
 	public Launcher() {
 		handler = new Handler();
