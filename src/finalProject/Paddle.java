@@ -28,7 +28,7 @@ public class Paddle extends GameObject {
 
 	@Override
 	public Rectangle getBounds() {
-		return new Rectangle(xPosition,yPosition, 200, 20);
+		return new Rectangle(xPosition,yPosition, 100, 20);
 	
 	}
 

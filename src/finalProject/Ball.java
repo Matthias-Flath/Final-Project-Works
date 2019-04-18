@@ -51,13 +51,27 @@ public class Ball extends GameObject {
 			if(tempObject.getId() == ID.Paddle) {
 				//paddle collision code
 				if(getBounds().intersects(tempObject.getBounds())) {
-					this.ySpeed*=-1;
+					if((this.xPosition - tempObject.getxPosition()) < 20){
+					 	this.ySpeed*=-1;
+					  	this.xSpeed = -5;
+					  }else if((this.xPosition - tempObject.getxPosition()) < 40){
+						 	this.ySpeed*=-1;
+						  	this.xSpeed = -3;
+					  }else if((this.xPosition - tempObject.getxPosition()) < 60){
+						 	this.ySpeed*=-1;
+						 	this.xSpeed = r.nextInt((1 - -1) +1) -1;
+					  }else if((this.xPosition - tempObject.getxPosition()) < 80){
+						 	this.ySpeed*=-1;
+						 	this.xSpeed = 3;
+					  }else {
+						 	this.ySpeed*=-1;
+						 	this.xSpeed = -5;
+					  	}
 				}
 			}
 			if(tempObject.getId() == ID.Brick) {//brick collison
-			}
+			}	
 		}
-		
 	}
 	@Override
 	public void render(Graphics g) {
