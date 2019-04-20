@@ -25,7 +25,7 @@ public class Paddle extends GameObject {
 
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.white);//draws our paddle 
+		g.setColor(Color.black);//draws our paddle 
 		g.fillRect(xPosition, yPosition, 100, 20);
 	}
 

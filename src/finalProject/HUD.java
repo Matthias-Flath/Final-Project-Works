@@ -16,7 +16,7 @@ public class HUD {
 	}
 	
 	public void render(Graphics g) {//draw the lives and score on screen
-		g.setColor(Color.white);
+		g.setColor(Color.black);
 		g.setFont(new Font("TimesRoman", Font.BOLD, 20));
 		g.drawString("Lives: " + HUD.LIVES, 10, 30);
 		g.setFont(new Font("TimesRoman", Font.BOLD, 20));

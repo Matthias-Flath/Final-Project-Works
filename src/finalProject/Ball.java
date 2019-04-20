@@ -1,8 +1,5 @@
 package finalProject;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.util.Random;
 /*This is the ball that bounces around the screen destroying bricks.
  * the player controls the paddle to keep it from falling off the bottom of the screen
@@ -11,20 +8,24 @@ import java.util.Random;
  * 
  */
 
-public class Ball extends GameObject {
-
-	private Random r = new Random();//this helps determine starting direction.
-	Handler handler;//we need this to be able to loop through objects checking for collision
+public class Ball extends GameObject{
+	
+	private Random r; 
+	static int ballCount;
+	public int diameter;
+	private Handler handler;//we need this to be able to loop through objects checking for collision
 	public Ball(int xPosition, int yPosition, ID id, Handler handler) {
 		super(xPosition, yPosition, id);
 		this.handler = handler;
-		xSpeed = r.nextInt((3 - -3) +1) -3;//random starting direction
-		ySpeed = -3;
-
+		ballCount++;
+		this.xPosition = xPosition;
+		this.yPosition = yPosition;
+		xSpeed = 3;
+		ySpeed = 1;
+		diameter = 20;
 	}
 
-
-	@Override//the tick method contains how the ball will move
+	// Ball movement
 	public void tick() {
 		xPosition += xSpeed;//every tick it will move
 		yPosition += ySpeed;
@@ -37,16 +38,13 @@ public class Ball extends GameObject {
 		if(yPosition > Launcher.HEIGHT)//if it goes beneath the floor
 		{
 			HUD.LIVES--;//subtract from lives
-			xSpeed = r.nextInt((3 - -3) +1) -3;//choose a new random movement
+			xSpeed = 3;//choose a new random movement
 			ySpeed = -3;
 			xPosition = Launcher.WIDTH/2;//then move the ball back to starting position
 			yPosition = Launcher.HEIGHT/2;
 		}
-		collision();//call the method that checks if we hit anything.
+		collision();
 	}
-
-	//the collision method loops through all objects checking if the ball
-	//collided with any of them.
 	public void collision() {
 		for (int i = 0; i < handler.objects.size(); i++) {//loop through objects
 			GameObject tempObject = handler.objects.get(i);
@@ -55,37 +53,37 @@ public class Ball extends GameObject {
 				if(getBounds().intersects(tempObject.getBounds())) {//did we collide?
 				//if we collided check where on the paddle and bounce based on that.
 					if((this.xPosition - tempObject.getxPosition()) < 10){
-					 	this.ySpeed*=-3;
+					 	this.ySpeed =-3;
 					  	this.xSpeed = -5;
 					}else if((this.xPosition - tempObject.getxPosition()) < 20){
-						 	this.ySpeed*=-3;
+						 	this.ySpeed =-3;
 						  	this.xSpeed = -4;
 					  }else if((this.xPosition - tempObject.getxPosition()) < 30){
-						 	this.ySpeed*=-3;
+						 	this.ySpeed =-3;
 						  	this.xSpeed = -3;
 					  }else if((this.xPosition - tempObject.getxPosition()) < 45){
-						 	this.ySpeed*=-3;
+						 	this.ySpeed =-3;
 						  	this.xSpeed = -2;
 					  }else if((this.xPosition - tempObject.getxPosition()) < 50){
-						 	this.ySpeed*=-3;
+						 	this.ySpeed =-3;
 						  	this.xSpeed = -1;
 					  }else if((this.xPosition - tempObject.getxPosition()) == 50){
-						 	this.ySpeed*=-3;
+						 	this.ySpeed =-3;
 						  	this.xSpeed = 0;
 					  }else if((this.xPosition - tempObject.getxPosition()) < 55){
-						 	this.ySpeed*=-3;
+						 	this.ySpeed =-3;
 						 	this.xSpeed = 1;
 					  }else if((this.xPosition - tempObject.getxPosition()) < 70){
-						 	this.ySpeed*=-3;
+						 	this.ySpeed =-3;
 						  	this.xSpeed = 2;
 					  }else if((this.xPosition - tempObject.getxPosition()) < 80){
-						 	this.ySpeed*=-3;
+						 	this.ySpeed =-3;
 						 	this.xSpeed = 3;
 					  }else if((this.xPosition - tempObject.getxPosition()) < 90){
-						 	this.ySpeed*=-3;
+						 	this.ySpeed =-3;
 						  	this.xSpeed = 4;
 					  }else {
-						 	this.ySpeed*=-3;
+						 	this.ySpeed =-3;
 						 	this.xSpeed = 5;
 					  	}
 				}
@@ -94,17 +92,32 @@ public class Ball extends GameObject {
 			}	
 		}
 	}
-	//the render() method draws the ball
-	@Override
+	
+	
 	public void render(Graphics g) {
-		g.setColor(Color.blue);
-		g.fillOval(xPosition, yPosition, 20, 20);
+		//draw the tail of the ball. 
+		g.setColor(Color.WHITE);
+		g.fillOval(xPosition - 8*xSpeed, yPosition -8*ySpeed , diameter, diameter);
+		
+		g.setColor(Color.LIGHT_GRAY);
+		g.fillOval(xPosition - 6*xSpeed, yPosition -6*ySpeed, diameter, diameter);
+		
+		g.setColor(Color.GRAY);
+		g.fillOval(xPosition -4*xSpeed, yPosition -4*ySpeed, diameter, diameter);
+		
+		g.setColor(Color.DARK_GRAY);
+		g.fillOval(xPosition - 2*xSpeed, yPosition - 2*ySpeed, diameter, diameter);
+		//draw the ball
+		g.setColor(Color.BLACK);
+		g.fillOval(xPosition, yPosition, diameter, diameter);
+		
+	
 	}
 
-	// the getBounds() method allows us to check for collision.
+	
 	@Override
 	public Rectangle getBounds() {
-		return new Rectangle(xPosition,yPosition, 20, 20);//it is a rectangle but oh well
+		// TODO Auto-generated method stub
+		return new Rectangle(xPosition, yPosition, diameter, diameter);
 	}
-
 }

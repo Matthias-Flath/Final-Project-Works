@@ -92,7 +92,7 @@ public class Launcher extends Canvas implements Runnable{
 		
 		Graphics g = bs.getDrawGraphics();
 		
-		g.setColor(Color.black);//fill the screen with black
+		g.setColor(Color.white);//fill the screen with black
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
 		
