@@ -6,7 +6,7 @@ import java.awt.Rectangle;
  * the abstract class GameObject contains all the information every object in our game uses
  * the x and y coordinates, the speed they move at and the coordinates.
  * it contains getters and setters for all of this information as well as the 
- * method getBounds() which is used to determine collision. 
+ * method getBounds() which is used to determine collision.  
  */
 public abstract class GameObject {
 	

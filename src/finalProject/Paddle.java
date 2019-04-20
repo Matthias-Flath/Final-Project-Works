@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 /*
- * This is the paddle the player controls. they can move it left and right to 
+ * This is the paddle the player controls. they can move it left and right to   
  * keep the ball from falling off the screen.
  */
 public class Paddle extends GameObject {

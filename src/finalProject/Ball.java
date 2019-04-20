@@ -7,7 +7,7 @@ import java.util.Random;
 /*This is the ball that bounces around the screen destroying bricks.
  * the player controls the paddle to keep it from falling off the bottom of the screen
  * when it goes off the bottom of the screen it goes back to the center
- * and takes away a life when it destroys a brick it should add score.
+ * and takes away a life when it destroys a brick it should add score. 
  * 
  */
 

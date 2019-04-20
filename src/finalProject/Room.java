@@ -5,7 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 //this is just the parameters on our game room. How big it is what clicking the X does
-//make it visible, then start.
+//make it visible, then start.    
 public class Room extends Canvas {
 	
 	private static final long serialVersionUID = 8086635427339352854L;

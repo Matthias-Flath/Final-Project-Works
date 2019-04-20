@@ -8,7 +8,7 @@ import java.awt.image.BufferStrategy;
 public class Launcher extends Canvas implements Runnable{
 
 	private static final long serialVersionUID = 3782368761176837393L;
-	//some variables we need the width and height are public static finals so other 
+	//some variables we need the width and height are public static finals so other   
 	//objects can use them to determine where they are if we want to change the size of the room
 	//without changing individual numbers.
 	public static final int WIDTH = 640, HEIGHT = 480;

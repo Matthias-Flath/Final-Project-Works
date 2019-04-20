@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 /*
- * the HUD contains some basic information displayed on the screen like lives and score.s
+ * the HUD contains some basic information displayed on the screen like lives and score. 
  */
 public class HUD {
 

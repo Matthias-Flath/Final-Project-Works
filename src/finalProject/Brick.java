@@ -9,7 +9,7 @@ public class Brick extends GameObject{
 	
 	public Brick(int xPosition, int yPosition, ID id) {
 		super(xPosition, yPosition, id);
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stub  
 	}
 
 	@Override
