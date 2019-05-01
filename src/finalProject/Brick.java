@@ -6,6 +6,8 @@ import java.awt.Rectangle;
 
 public class Brick extends GameObject{
 
+	public static final int BRICK_WIDTH = 64;
+	public static final int BRICK_HEIGHT = 24;
 	
 	public Brick(int xPosition, int yPosition, ID id) {
 		super(xPosition, yPosition, id);
@@ -21,14 +23,14 @@ public class Brick extends GameObject{
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.green);
-		g.fillRect(xPosition, yPosition, width, height);
+		g.fillRect(xPosition, yPosition, BRICK_WIDTH, BRICK_HEIGHT);
 		
 	}
 
 	@Override
 	public Rectangle getBounds() {
 		// TODO Auto-generated method stub
-		return new Rectangle(xPosition, yPosition, width, height);
+		return new Rectangle(xPosition, yPosition, BRICK_WIDTH, BRICK_HEIGHT);
 	}
 	
 }

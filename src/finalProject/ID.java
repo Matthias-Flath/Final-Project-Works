@@ -6,5 +6,6 @@ public enum ID {
 
 	Paddle(),
 	Ball(),
+	Item(),
 	Brick();
 }

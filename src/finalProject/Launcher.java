@@ -14,7 +14,7 @@ public class Launcher extends Canvas implements Runnable{
 	public static final int WIDTH = 640, HEIGHT = 480;
 	private Thread thread;
 	private boolean running = false;
-	private Handler handler;
+	private static Handler handler;
 	private HUD hud;
 	/*
 	 * This is the launcher. It contains both the main method that actually starts the game
@@ -32,8 +32,20 @@ public class Launcher extends Canvas implements Runnable{
 		handler.addObject(new Paddle(270, HEIGHT-80, ID.Paddle ));//need to add these after the handler is made
 		handler.addObject(new Ball(WIDTH/2, HEIGHT/2, ID.Ball,handler));
 		
+		// adds the bricks
+		addBricks();
+		
 	}
 	
+	public static void addBricks() {
+		for (int i = 40; i < HEIGHT * 3 / 8; i = i + Brick.BRICK_HEIGHT + 16)
+		{
+			for (int j = 4; j <= WIDTH - Brick.BRICK_WIDTH; j = j + Brick.BRICK_WIDTH + 16) {
+				
+				handler.addObject(new Brick(j, i, ID.Brick));
+			}
+		}
+	}
 	
 	public synchronized void start() {//remember our room runs this. starts the thread
 		thread = new Thread(this);

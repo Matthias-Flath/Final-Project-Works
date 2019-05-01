@@ -10,10 +10,12 @@ import java.util.Random;
 
 public class Ball extends GameObject{
 	
-	private Random r; 
+	private Random r;
+	private static int tempScore = 0; //score used to keep track of bricks destroyed
 	static int ballCount;
 	public int diameter;
 	private Handler handler;//we need this to be able to loop through objects checking for collision
+	
 	public Ball(int xPosition, int yPosition, ID id, Handler handler) {
 		super(xPosition, yPosition, id);
 		this.handler = handler;
@@ -37,14 +39,29 @@ public class Ball extends GameObject{
 		}
 		if(yPosition > Launcher.HEIGHT)//if it goes beneath the floor
 		{
+			if (HUD.LIVES > 0) { //if lives are remaining
+			
 			HUD.LIVES--;//subtract from lives
-			xSpeed = 3;//choose a new random movement
-			ySpeed = -3;
-			xPosition = Launcher.WIDTH/2;//then move the ball back to starting position
-			yPosition = Launcher.HEIGHT/2;
+				
+			resetPos(); // resets ball position
+			}
+			
+			else { //if no lives are remaining
+				xPosition = Launcher.WIDTH/2;
+				yPosition = Launcher.HEIGHT + 200; //locks the ball off-screen
+			}
 		}
 		collision();
 	}
+	
+	public void resetPos() {
+		xSpeed = 3;//choose a new random movement
+		ySpeed = -3;
+		
+		xPosition = Launcher.WIDTH/2;//then move the ball back to starting position
+		yPosition = Launcher.HEIGHT/2;
+	}
+	
 	public void collision() {
 		for (int i = 0; i < handler.objects.size(); i++) {//loop through objects
 			GameObject tempObject = handler.objects.get(i);
@@ -88,7 +105,23 @@ public class Ball extends GameObject{
 					  	}
 				}
 			}
-			if(tempObject.getId() == ID.Brick) {//brick collison
+			if(tempObject.getId() == ID.Brick) {//brick collision
+				if(getBounds().intersects(tempObject.getBounds())) {
+					
+					this.ySpeed = this.ySpeed * -1;
+					
+					HUD.SCORE = HUD.SCORE + 100;
+					tempScore = tempScore + 100;
+					
+					tempObject.setyPosition(tempObject.getyPosition() - Launcher.HEIGHT); // Bricks are moved off-screen when hit
+					
+					//checks if room is empty
+					if (tempScore >= 3200) {
+						tempScore = 0;
+						resetPos();
+						Launcher.addBricks();
+					}
+				}
 			}	
 		}
 	}
