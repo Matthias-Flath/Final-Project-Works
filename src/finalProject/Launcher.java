@@ -13,7 +13,7 @@ public class Launcher extends Canvas implements Runnable{
 	//without changing individual numbers.
 	public static final int WIDTH = 640, HEIGHT = 480;
 	private Thread thread;
-	
+	 
 	private boolean running = false;
 	private static Handler handler;
 	private HUD hud;

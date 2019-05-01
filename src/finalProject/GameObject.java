@@ -8,7 +8,7 @@ import java.awt.Rectangle;
  * it contains getters and setters for all of this information as well as the 
  * method getBounds() which is used to determine collision.  
  */
-public abstract class GameObject {
+public abstract class GameObject { 
 	
 	protected int xPosition, yPosition, xSpeed, ySpeed;//position on screen and speed
 	protected ID id;//identifies what the object is.

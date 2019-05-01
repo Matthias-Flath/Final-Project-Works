@@ -64,7 +64,7 @@ public class Item extends GameObject{
 		//moves the item down
 		xPosition += xSpeed;
 		yPosition += ySpeed;
-		
+		 
 		collision();
 		
 		if (yPosition > Launcher.HEIGHT + 40)

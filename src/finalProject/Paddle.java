@@ -14,7 +14,7 @@ public class Paddle extends GameObject {
 		super(xPosition, yPosition, id);//constructor just needs a starting position and to know it is a paddle
 		
 	}
-
+ 
 	@Override
 	public void tick() {//each tick we need to move the paddle
 		xPosition += xSpeed;//based on our speed

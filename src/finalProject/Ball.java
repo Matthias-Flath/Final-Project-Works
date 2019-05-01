@@ -45,20 +45,20 @@ public class Ball extends GameObject{
 		diameter = 20;
 	}
 
-	//Item related
+	//Item related  
 	public static void setPierce() {
 		pierce = true;
-		pierceTime = 500;
+		pierceTime = 350;
 	}
 	
 	public static void setCrazy() {
 		crazy = true;
-		crazyTime = 500;
+		crazyTime = 350;
 	}
 	
 	public static void setFast() {
 		fast = true;
-		fastTime = 500;
+		fastTime = 350;
 	}
 	
 	// Ball movement
@@ -73,14 +73,12 @@ public class Ball extends GameObject{
 		}
 		if(yPosition > Launcher.HEIGHT)//if it goes beneath the floor
 		{
-			if (HUD.LIVES > 0) { //if lives are remaining
-			
-			HUD.LIVES--;//subtract from lives
-				
+			HUD.LIVES--;
+			if (HUD.LIVES >= 0) { //if lives are remaining
 			resetPos(); // resets ball position
 			}
-			
-			else { //if no lives are remaining
+			else { 
+				HUD.LIVES--;//if no lives are remaining
 				xPosition = Launcher.WIDTH/2;
 				yPosition = Launcher.HEIGHT + 200; //locks the ball off-screen
 			}

@@ -11,7 +11,7 @@ public class KeyInput extends KeyAdapter {
 	
 	public KeyInput(Handler handler) {
 		this.handler = handler;
-	}
+	} 
 	
 	public void keyPressed(KeyEvent e) {//when a key is pressed
 		int key = e.getKeyCode();
