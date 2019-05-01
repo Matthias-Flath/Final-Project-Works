@@ -8,7 +8,6 @@ public class Brick extends GameObject{
 
 	public static final int BRICK_WIDTH = 64;
 	public static final int BRICK_HEIGHT = 24;
-	
 	public Brick(int xPosition, int yPosition, ID id) {
 		super(xPosition, yPosition, id);
 		// TODO Auto-generated constructor stub  

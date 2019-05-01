@@ -13,6 +13,7 @@ public class Launcher extends Canvas implements Runnable{
 	//without changing individual numbers.
 	public static final int WIDTH = 640, HEIGHT = 480;
 	private Thread thread;
+	
 	private boolean running = false;
 	private static Handler handler;
 	private HUD hud;
@@ -96,6 +97,8 @@ public class Launcher extends Canvas implements Runnable{
 	
 	
 	private void render() {//draws stuff
+		
+		
 		BufferStrategy bs = this.getBufferStrategy();//used to slow down the loop
 		if ( bs == null) {
 			this.createBufferStrategy(3);
@@ -113,6 +116,7 @@ public class Launcher extends Canvas implements Runnable{
 		
 		g.dispose();
 		bs.show();
+		
 	}
 
 

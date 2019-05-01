@@ -10,23 +10,57 @@ import java.util.Random;
 
 public class Ball extends GameObject{
 	
-	private Random r;
+	private Random r = new Random();
 	private static int tempScore = 0; //score used to keep track of bricks destroyed
-	static int ballCount;
+	
 	public int diameter;
-	private Handler handler;//we need this to be able to loop through objects checking for collision
+	private Handler handler = new Handler();//we need this to be able to loop through objects checking for collision
+	
+	// Item related
+	private static boolean pierce = false;
+	private static int pierceTime = 0;
+	
+	private static boolean crazy = false;
+	private static int crazyTime = 0;
+	
+	private static boolean fast = false;
+	private static int fastTime = 0;
 	
 	public Ball(int xPosition, int yPosition, ID id, Handler handler) {
 		super(xPosition, yPosition, id);
 		this.handler = handler;
-		ballCount++;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
-		xSpeed = 3;
+		
+		if (fast == false) {
+		xSpeed = r.nextInt(6) - 3;
 		ySpeed = 1;
+		}
+		
+		else {
+			xSpeed = 2 * (r.nextInt(6) - 3);
+			ySpeed = 2;
+		}
+		
 		diameter = 20;
 	}
 
+	//Item related
+	public static void setPierce() {
+		pierce = true;
+		pierceTime = 500;
+	}
+	
+	public static void setCrazy() {
+		crazy = true;
+		crazyTime = 500;
+	}
+	
+	public static void setFast() {
+		fast = true;
+		fastTime = 500;
+	}
+	
 	// Ball movement
 	public void tick() {
 		xPosition += xSpeed;//every tick it will move
@@ -51,12 +85,62 @@ public class Ball extends GameObject{
 				yPosition = Launcher.HEIGHT + 200; //locks the ball off-screen
 			}
 		}
+		
+		if (crazy == true && crazyTime % 10 == 0)
+			crazy();
+		
 		collision();
+		
+		//item related
+		if (pierceTime > 0)
+			pierceTime--;
+		
+		else
+			pierce = false;
+		
+		if (crazyTime > 0)
+			crazyTime--;
+		
+		else
+			crazy = false;
+		
+		if (fastTime > 0)
+			fastTime--;
+		
+		else
+			fast = false;
+	}
+	
+	private void crazy() {
+		if (fast == false) {
+		xSpeed = r.nextInt(6) - 3;
+		ySpeed = r.nextInt(6) - 3;
+		}
+		
+		else {
+			xSpeed = 2 * (r.nextInt(6) - 3);
+			ySpeed = 2 * (r.nextInt(6) - 3);
+		}
+		
+		if (ySpeed == 0) {
+			if (fast == false)
+			ySpeed = 1;
+			else
+				ySpeed = 2;
+		}
 	}
 	
 	public void resetPos() {
-		xSpeed = 3;//choose a new random movement
+		
+		if (fast == false) {
+		xSpeed = r.nextInt(6) - 3;
 		ySpeed = -3;
+		}
+		
+		else {
+			xSpeed = 2 * (r.nextInt(6) - 3);
+			ySpeed = -6;	
+		}
 		
 		xPosition = Launcher.WIDTH/2;//then move the ball back to starting position
 		yPosition = Launcher.HEIGHT/2;
@@ -70,56 +154,145 @@ public class Ball extends GameObject{
 				if(getBounds().intersects(tempObject.getBounds())) {//did we collide?
 				//if we collided check where on the paddle and bounce based on that.
 					if((this.xPosition - tempObject.getxPosition()) < 10){
+						if (fast == false) {
 					 	this.ySpeed =-3;
 					  	this.xSpeed = -5;
+						}
+						else {
+							this.ySpeed =-6;
+						  	this.xSpeed = -10;	
+						}
+						
 					}else if((this.xPosition - tempObject.getxPosition()) < 20){
+							if (fast == false) {
 						 	this.ySpeed =-3;
 						  	this.xSpeed = -4;
+							}
+							else {
+								this.ySpeed =-6;
+							  	this.xSpeed = -8;
+							}
+							
 					  }else if((this.xPosition - tempObject.getxPosition()) < 30){
+						  	if (fast == false) {
 						 	this.ySpeed =-3;
 						  	this.xSpeed = -3;
+						  	}
+						  	else {
+						  		this.ySpeed =-6;
+							  	this.xSpeed = -6;
+						  	}
+						  	
 					  }else if((this.xPosition - tempObject.getxPosition()) < 45){
+						  	if (fast == false) {
 						 	this.ySpeed =-3;
 						  	this.xSpeed = -2;
+						  	}
+						  	else {
+						  		this.ySpeed =-6;
+							  	this.xSpeed = -4;
+						  	}
+						  	
 					  }else if((this.xPosition - tempObject.getxPosition()) < 50){
+						  	if (fast == false) {
 						 	this.ySpeed =-3;
 						  	this.xSpeed = -1;
+						  	}
+						  	else {
+						  		this.ySpeed =-6;
+							  	this.xSpeed = -2;
+						  	}
+						  	
 					  }else if((this.xPosition - tempObject.getxPosition()) == 50){
+						  	if (fast == false) {
 						 	this.ySpeed =-3;
 						  	this.xSpeed = 0;
+						  	}
+						  	else {
+						  		this.ySpeed =-6;
+							  	this.xSpeed = 0;
+						  	}
+						  	
 					  }else if((this.xPosition - tempObject.getxPosition()) < 55){
+						  	if (fast == false) {
 						 	this.ySpeed =-3;
 						 	this.xSpeed = 1;
+						  	}
+						  	else {
+						  		this.ySpeed =-6;
+							  	this.xSpeed = 2;
+						  	}
+						 	
 					  }else if((this.xPosition - tempObject.getxPosition()) < 70){
+						  	if (fast == false) {
 						 	this.ySpeed =-3;
 						  	this.xSpeed = 2;
+						  	}
+						  	else {
+						  		this.ySpeed =-6;
+							  	this.xSpeed = -4;
+						  	}
+						  	
 					  }else if((this.xPosition - tempObject.getxPosition()) < 80){
+						  	if (fast == false) {
 						 	this.ySpeed =-3;
 						 	this.xSpeed = 3;
+						  	}
+						  	else {
+						  		this.ySpeed =-6;
+							  	this.xSpeed = -6;
+						  	}
+						 	
 					  }else if((this.xPosition - tempObject.getxPosition()) < 90){
+						  	if (fast == false) {
 						 	this.ySpeed =-3;
 						  	this.xSpeed = 4;
+						  	}
+						  	else {
+						  		this.ySpeed =-6;
+							  	this.xSpeed = -8;
+						  	}
 					  }else {
+						  	if (fast == false) {
 						 	this.ySpeed =-3;
 						 	this.xSpeed = 5;
+						  	}
+						  	else {
+						  		this.ySpeed =-6;
+							  	this.xSpeed = 10;
+						  	}
 					  	}
 				}
 			}
-			if(tempObject.getId() == ID.Brick) {//brick collision
-				if(getBounds().intersects(tempObject.getBounds())) {
-					
-					this.ySpeed = this.ySpeed * -1;
-					
-					HUD.SCORE = HUD.SCORE + 100;
-					tempScore = tempScore + 100;
-					
-					tempObject.setyPosition(tempObject.getyPosition() - Launcher.HEIGHT); // Bricks are moved off-screen when hit
-					
-					//checks if room is empty
-					if (tempScore >= 3200) {
-						tempScore = 0;
-						resetPos();
-						Launcher.addBricks();
+			if (tempObject.getId() == ID.Brick) {// brick collision
+			    if (getBounds().intersects(tempObject.getBounds())) {
+			    	
+			    if (pierce == false) {
+			     if (xPosition + 20 <= tempObject.getxPosition()
+			       || xPosition >= tempObject.getxPosition() + Brick.BRICK_WIDTH) {
+			      if (yPosition + 10 >= tempObject.getyPosition()
+			        && yPosition + 10 <= tempObject.getyPosition() + Brick.BRICK_HEIGHT) {
+			       this.xSpeed = this.xSpeed * -1;
+			      }
+			     } else {
+			      this.ySpeed = this.ySpeed * -1;
+			     }
+			    }
+			    
+			     HUD.SCORE = HUD.SCORE + 100;
+			     tempScore = tempScore + 100;
+			     
+			     if (r.nextInt(12) == 0) // random chance to spawn an item
+			    	 handler.addObject(new Item(tempObject.getxPosition(), tempObject.getyPosition(), ID.Item, handler));
+			     
+			     tempObject.setyPosition(tempObject.getyPosition() - Launcher.HEIGHT); // Bricks are moved off-screen
+			                       // when hit
+			     // checks if room is empty
+			     if (tempScore >= 3200) {
+			      tempScore = 0;
+			      resetPos();
+			      Launcher.addBricks();
+
 					}
 				}
 			}	
