@@ -116,7 +116,7 @@ public class Launcher extends Canvas implements Runnable{
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
 		
-		handler.render(g);//loop through all objects drawing them
+		handler.render(g);//loop through all objects drawing them 
 		hud.render(g);//draw the HUD
 		
 		g.dispose();

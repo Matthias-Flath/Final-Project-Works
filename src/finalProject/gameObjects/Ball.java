@@ -154,7 +154,7 @@ public class Ball extends GameObject{
 			ySpeed = -6;	
 		}
 		
-		xPosition = Launcher.WIDTH/2;//then move the ball back to starting position
+		xPosition = Launcher.WIDTH/2;//then move the ball back to starting position 
 		yPosition = Launcher.HEIGHT/2;
 	}
 	

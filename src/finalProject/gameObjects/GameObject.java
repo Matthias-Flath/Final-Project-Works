@@ -10,7 +10,7 @@ import java.awt.Rectangle;
  */
 public abstract class GameObject { 
 	
-	protected int xPosition, yPosition, xSpeed, ySpeed;//position on screen and speed
+	protected int xPosition, yPosition, xSpeed, ySpeed;//position on screen and speed 
 	protected ID id;//identifies what the object is.
 	
 	//every object on creation has these

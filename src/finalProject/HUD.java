@@ -23,7 +23,7 @@ public class HUD {
 		g.setColor(Color.black);
 		g.setFont(new Font("TimesRoman", Font.BOLD, 20));
 		g.drawString("Lives: " + HUD.LIVES, 10, 30);
-		g.setFont(new Font("TimesRoman", Font.BOLD, 20));
+		g.setFont(new Font("TimesRoman", Font.BOLD, 20)); 
 		g.drawString("Score: " + HUD.SCORE, Launcher.WIDTH-200, 30);
 		}
 		else { 

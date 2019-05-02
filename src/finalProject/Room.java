@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 public class Room extends Canvas {
 	
 	private static final long serialVersionUID = 8086635427339352854L;
-//basically it is a JFrame that has a Launcher object added to it then runs the start command
+//basically it is a JFrame that has a Launcher object added to it then runs the start command 
 	//in that Launcher
 	public Room(int width, int height, String title, Launcher launcher) {
 		JFrame frame = new JFrame(title);

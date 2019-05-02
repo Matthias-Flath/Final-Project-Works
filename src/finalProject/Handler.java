@@ -8,7 +8,7 @@ import finalProject.gameObjects.GameObject;
  * the handler is a LinkedList of all of our game objects. We loop through it continuously moving and drawing 
  * every object in the Handler. 
  */
-public class Handler {
+public class Handler { 
 	//our list of objects
 	public LinkedList<GameObject> objects = new LinkedList<GameObject>();
 	

@@ -13,7 +13,7 @@ public class Paddle extends GameObject {
 
 	
 	public Paddle(int xPosition, int yPosition, ID id) {
-		super(xPosition, yPosition, id);//constructor just needs a starting position and to know it is a paddle
+		super(xPosition, yPosition, id);//constructor just needs a starting position and to know it is a paddle 
 		
 	}
  

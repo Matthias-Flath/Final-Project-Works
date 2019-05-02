@@ -37,7 +37,7 @@ public class Item extends GameObject{
 	
 	public void collision() {
 		
-		for (int i = 0; i < handler.objects.size(); i++) {//loop through objects
+		for (int i = 0; i < handler.objects.size(); i++) {//loop through objects 
 			GameObject tempObject = handler.objects.get(i);
 			if(tempObject.getId() == ID.Paddle) {//collisions with paddle
 				
