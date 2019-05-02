@@ -1,4 +1,5 @@
-package finalProject;
+package finalProject.gameObjects;
+
 import java.awt.*;
 import java.util.Random;
 /*This is the ball that bounces around the screen destroying bricks.
@@ -7,6 +8,8 @@ import java.util.Random;
  * and takes away a life when it destroys a brick it should add score. 
  * 
  */
+
+import finalProject.*;
 
 public class Ball extends GameObject{
 	
@@ -48,26 +51,33 @@ public class Ball extends GameObject{
 	//Item related  
 	public static void setPierce() {
 		pierce = true;
-		pierceTime = 350;
+		pierceTime = 500;
 	}
 	
 	public static void setCrazy() {
 		crazy = true;
-		crazyTime = 350;
+		crazyTime = 500;
 	}
 	
 	public static void setFast() {
 		fast = true;
-		fastTime = 350;
+		fastTime = 500;
 	}
 	
 	// Ball movement
 	public void tick() {
 		xPosition += xSpeed;//every tick it will move
 		yPosition += ySpeed;
-		if(xPosition < 0 || xPosition > 615) {//if it hits either wall bounce.
+		//if it hits either wall bounce.
+		if(xPosition < 0) {
 			xSpeed *= -1;
+			xPosition = 0;
 		}
+		if(xPosition > 600) {
+			xSpeed *= -1;
+			xPosition = 600;
+		}
+			
 		if(yPosition < 0) {//if it hits the ceiling bounce
 			ySpeed *= -1;
 		}
@@ -101,6 +111,10 @@ public class Ball extends GameObject{
 		
 		else
 			crazy = false;
+		if(fastTime == 500) {
+			xSpeed*=2;
+			ySpeed*=2;
+		}
 		
 		if (fastTime > 0)
 			fastTime--;

@@ -1,9 +1,13 @@
-package finalProject;
+package finalProject.gameObjects;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
+
+import finalProject.HUD;
+import finalProject.Handler;
+import finalProject.Launcher;
 
 public class Item extends GameObject{
 	
@@ -43,15 +47,15 @@ public class Item extends GameObject{
 					
 					switch (this.type) { // Item effect
 					case 0: Ball.setPierce();
-					
+							break;
 					case 1: HUD.LIVES++;
-					
+							break;
 					case 2: HUD.SCORE = HUD.SCORE + 10000;
-					
+							break;
 					case 3: Ball.setCrazy();
-					
+							break;
 					case 4: Ball.setFast();
-					
+							break;
 					default: HUD.SCORE = HUD.SCORE + 5000;
 					}
 				}

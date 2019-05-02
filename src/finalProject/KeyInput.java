@@ -2,6 +2,9 @@ package finalProject;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
+import finalProject.gameObjects.GameObject;
+import finalProject.gameObjects.ID;
 /*
  * manages our key input 
  */

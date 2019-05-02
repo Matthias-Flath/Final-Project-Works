@@ -1,8 +1,10 @@
-package finalProject;
+package finalProject.gameObjects;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+
+import finalProject.Launcher;
 /*
  * This is the paddle the player controls. they can move it left and right to   
  * keep the ball from falling off the screen.

@@ -26,7 +26,7 @@ public class HUD {
 		g.setFont(new Font("TimesRoman", Font.BOLD, 20));
 		g.drawString("Score: " + HUD.SCORE, Launcher.WIDTH-200, 30);
 		}
-		if(GAMEOVER) { 
+		else { 
 			g.setColor(Color.black);
 			g.fillRect(0, 0, Launcher.WIDTH, Launcher.HEIGHT);
 			g.setColor(Color.red);

@@ -5,6 +5,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import finalProject.gameObjects.Ball;
+import finalProject.gameObjects.Brick;
+import finalProject.gameObjects.ID;
+import finalProject.gameObjects.Paddle;
+
 public class Launcher extends Canvas implements Runnable{
 
 	private static final long serialVersionUID = 3782368761176837393L;
@@ -88,7 +93,7 @@ public class Launcher extends Canvas implements Runnable{
 			frames++;
 			if(System.currentTimeMillis()-timer > 1000){
 				timer += 1000;
-				System.out.println("FPS: " + frames);
+				//System.out.println("FPS: " + frames);
 				frames = 0;
 			}	
 		}

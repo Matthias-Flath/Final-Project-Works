@@ -1,4 +1,4 @@
-package finalProject;
+package finalProject.gameObjects;
 
 import java.awt.Color;
 import java.awt.Graphics;

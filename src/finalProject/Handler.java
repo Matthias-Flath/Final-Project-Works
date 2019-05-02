@@ -2,13 +2,15 @@ package finalProject;
 
 import java.awt.Graphics; 
 import java.util.LinkedList;
+
+import finalProject.gameObjects.GameObject;
 /*
  * the handler is a LinkedList of all of our game objects. We loop through it continuously moving and drawing 
  * every object in the Handler. 
  */
 public class Handler {
 	//our list of objects
-	LinkedList<GameObject> objects = new LinkedList<GameObject>();
+	public LinkedList<GameObject> objects = new LinkedList<GameObject>();
 	
 	//loops through every object running their respective tick() methods
 	public void tick() {
