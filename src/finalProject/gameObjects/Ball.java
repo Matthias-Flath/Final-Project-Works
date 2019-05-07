@@ -29,12 +29,13 @@ public class Ball extends GameObject{
 	private static boolean fast = false;
 	private static int fastTime = 0;
 	
+	public static int difficulty;
 	public Ball(int xPosition, int yPosition, ID id, Handler handler) {
 		super(xPosition, yPosition, id);
 		this.handler = handler;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
-		
+		difficulty = 0;
 		if (fast == false) {
 		xSpeed = r.nextInt(6) - 3;
 		ySpeed = 1;
@@ -67,7 +68,23 @@ public class Ball extends GameObject{
 	// Ball movement
 	public void tick() {
 		xPosition += xSpeed;//every tick it will move
+		if(xSpeed > 0)
+		{
+			xPosition += difficulty;
+		}
+		if(xSpeed < 0)
+		{
+			xPosition -= difficulty;
+		}
 		yPosition += ySpeed;
+		if(ySpeed > 0)
+		{
+			yPosition += difficulty;
+		}
+		if(xSpeed < 0)
+		{
+			yPosition -= difficulty;
+		}
 		//if it hits either wall bounce.
 		if(xPosition < 0) {
 			xSpeed *= -1;
@@ -304,7 +321,7 @@ public class Ball extends GameObject{
 			      tempScore = 0;
 			      resetPos();
 			      Launcher.addBricks();
-
+			      difficulty++;
 					}
 				}
 			}	
@@ -315,16 +332,16 @@ public class Ball extends GameObject{
 	public void render(Graphics g) {
 		//draw the tail of the ball. 
 		g.setColor(Color.WHITE);
-		g.fillOval(xPosition - 8*xSpeed, yPosition -8*ySpeed , diameter, diameter);
+		g.fillOval(xPosition - 8*xSpeed- difficulty, yPosition -8*ySpeed - difficulty , diameter, diameter);
 		
 		g.setColor(Color.LIGHT_GRAY);
-		g.fillOval(xPosition - 6*xSpeed, yPosition -6*ySpeed, diameter, diameter);
+		g.fillOval(xPosition - 6*xSpeed- difficulty, yPosition -6*ySpeed - difficulty, diameter, diameter);
 		
 		g.setColor(Color.GRAY);
-		g.fillOval(xPosition -4*xSpeed, yPosition -4*ySpeed, diameter, diameter);
+		g.fillOval(xPosition -4*xSpeed- difficulty, yPosition -4*ySpeed - difficulty, diameter, diameter);
 		
 		g.setColor(Color.DARK_GRAY);
-		g.fillOval(xPosition - 2*xSpeed, yPosition - 2*ySpeed, diameter, diameter);
+		g.fillOval(xPosition - 2*xSpeed - difficulty, yPosition - 2*ySpeed - difficulty, diameter, diameter);
 		//draw the ball
 		g.setColor(Color.BLACK);
 		g.fillOval(xPosition, yPosition, diameter, diameter);
@@ -332,6 +349,9 @@ public class Ball extends GameObject{
 	
 	}
 
+	public int getDifficulty() {
+		return difficulty;
+	}
 	
 	@Override
 	public Rectangle getBounds() {

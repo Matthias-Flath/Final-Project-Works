@@ -3,6 +3,8 @@ package finalProject;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+
+import finalProject.gameObjects.Ball;
 /*
  * the HUD contains some basic information displayed on the screen like lives and score. 
  */
@@ -23,6 +25,10 @@ public class HUD {
 		g.setColor(Color.black);
 		g.setFont(new Font("TimesRoman", Font.BOLD, 20));
 		g.drawString("Lives: " + HUD.LIVES, 10, 30);
+	
+		g.setFont(new Font("TimesRoman", Font.BOLD, 20));
+		g.drawString("Round " + Ball.difficulty, 150, 30);
+	
 		g.setFont(new Font("TimesRoman", Font.BOLD, 20)); 
 		g.drawString("Score: " + HUD.SCORE, Launcher.WIDTH-200, 30);
 		}
