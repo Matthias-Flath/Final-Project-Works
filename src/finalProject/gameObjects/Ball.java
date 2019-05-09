@@ -335,10 +335,10 @@ public class Ball extends GameObject{
 		int xTempDifficulty = difficulty;
 		int yTempDifficulty = difficulty;
 		if(xSpeed < 0) {
-			xTempDifficulty = -1*this.difficulty;
+			xTempDifficulty = -1*Ball.difficulty;
 		}
 		if(ySpeed < 0) {
-			yTempDifficulty = -1*this.difficulty;
+			yTempDifficulty = -1*Ball.difficulty;
 		}
 		g.setColor(Color.WHITE);
 		g.fillOval(xPosition - 8*(xSpeed+xTempDifficulty) , yPosition -8*(ySpeed+yTempDifficulty)  , diameter, diameter);
