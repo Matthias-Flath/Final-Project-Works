@@ -96,6 +96,7 @@ public class Ball extends GameObject{
 		}
 			
 		if(yPosition < 0) {//if it hits the ceiling bounce
+			yPosition = 0;
 			ySpeed *= -1;
 		}
 		if(yPosition > Launcher.HEIGHT)//if it goes beneath the floor
@@ -331,17 +332,25 @@ public class Ball extends GameObject{
 	
 	public void render(Graphics g) {
 		//draw the tail of the ball. 
+		int xTempDifficulty = difficulty;
+		int yTempDifficulty = difficulty;
+		if(xSpeed < 0) {
+			xTempDifficulty = -1*this.difficulty;
+		}
+		if(ySpeed < 0) {
+			yTempDifficulty = -1*this.difficulty;
+		}
 		g.setColor(Color.WHITE);
-		g.fillOval(xPosition - 8*xSpeed- difficulty, yPosition -8*ySpeed - difficulty , diameter, diameter);
+		g.fillOval(xPosition - 8*(xSpeed+xTempDifficulty) , yPosition -8*(ySpeed+yTempDifficulty)  , diameter, diameter);
 		
 		g.setColor(Color.LIGHT_GRAY);
-		g.fillOval(xPosition - 6*xSpeed- difficulty, yPosition -6*ySpeed - difficulty, diameter, diameter);
+		g.fillOval(xPosition - 6*(xSpeed+xTempDifficulty), yPosition -6*(ySpeed+yTempDifficulty) , diameter, diameter);
 		
 		g.setColor(Color.GRAY);
-		g.fillOval(xPosition -4*xSpeed- difficulty, yPosition -4*ySpeed - difficulty, diameter, diameter);
+		g.fillOval(xPosition -4*(xSpeed+xTempDifficulty), yPosition -4*(ySpeed+yTempDifficulty) , diameter, diameter);
 		
 		g.setColor(Color.DARK_GRAY);
-		g.fillOval(xPosition - 2*xSpeed - difficulty, yPosition - 2*ySpeed - difficulty, diameter, diameter);
+		g.fillOval(xPosition - 2*(xSpeed+xTempDifficulty), yPosition - 2*(ySpeed+yTempDifficulty) , diameter, diameter);
 		//draw the ball
 		g.setColor(Color.BLACK);
 		g.fillOval(xPosition, yPosition, diameter, diameter);
